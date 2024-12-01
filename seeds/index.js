@@ -1,17 +1,23 @@
 const mongoose = require('mongoose');
-const cities = require('./cities.js');
-const { descriptors, places } = require('./seedHelpers.js');
-const Campground = require('../models/campground.js');
+const cities = require('./cities');
+const { places, descriptors } = require('./seedHelpers');
+const Campground = require('../models/campground');
 
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
-    .then(() => {
-        console.log('database connected successfully');
-    })
-    .catch(() => {
-        console.log('Oh no error!!! could not connect to the database');
-    });
+mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Database connected");
+});
 
 const sample = array => array[Math.floor(Math.random() * array.length)];
+
 
 const seedDB = async () => {
     await Campground.deleteMany({});
@@ -28,4 +34,3 @@ const seedDB = async () => {
 seedDB().then(() => {
     mongoose.connection.close();
 })
-
