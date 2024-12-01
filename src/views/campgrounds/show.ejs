@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= campground.title %>
+    </title>
+    <link rel="stylesheet" href="/campgrounds/css/show.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="camp-header">
+            <h1 class="camp-title">
+                <%= campground.title %>
+            </h1>
+            <h2 class="camp-location">
+                <%= campground.location %>
+            </h2>
+        </header>
+
+        <div class="btn-group">
+            <a href="/campgrounds" class="btn">Back to All Campgrounds</a>
+            <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-edit">Edit Campground</a>
+        </div>
+    </div>
+</body>
+
+</html>
