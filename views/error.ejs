@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-lg border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h1>Error <%= statusCode %></h1>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title text-danger">Oops! Something went wrong.</h2>
+                        <p class="card-text">
+                            <%= message %>
+                        </p>
+                        <a href="/campgrounds" class="btn btn-primary mt-3">Go Back Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
